@@ -1,3 +1,4 @@
+# An object id is used to store object ids gathered from the fedora 3 instance
 class ObjectId < ActiveRecord::Base
   
   def self.populate(hash)
