@@ -1,0 +1,454 @@
+{
+"results": [
+{
+"subject": "info:fedora/uuid:7696fb2e-b4fc-496f-a0aa-dedccc6ab062"
+},
+{
+"subject": "info:fedora/uuid:8998c826-510c-4614-9864-764626752c95"
+},
+{
+"subject": "info:fedora/uuid:2eade3a6-8b0e-4a20-913f-e212080cbd34"
+},
+{
+"subject": "info:fedora/uuid:e95e7468-0e68-4256-96d3-fcdd4292ea36"
+},
+{
+"subject": "info:fedora/uuid:3cf08d30-e5b0-44de-8fd0-b62da36eca6f"
+},
+{
+"subject": "info:fedora/uuid:7a3230de-e28c-4907-b066-1602d2310aa1"
+},
+{
+"subject": "info:fedora/uuid:5a4e462c-6667-428f-bb09-31051e53840d"
+},
+{
+"subject": "info:fedora/uuid:cf9a4852-ecf8-46f4-94c2-0c5e6cca8d5b"
+},
+{
+"subject": "info:fedora/uuid:40971794-63de-4d3c-91a3-256d710900ca"
+},
+{
+"subject": "info:fedora/uuid:7ca728f5-6b5e-4f59-ae4b-dd81c8d9e2e8"
+},
+{
+"subject": "info:fedora/fedora-system:FedoraObject-3.0"
+},
+{
+"subject": "info:fedora/uuid:8134e243-9306-46f5-8b1f-2c60080ef702"
+},
+{
+"subject": "info:fedora/uuid:ad5848e4-1cfd-4a1d-b550-178e0cdf5a5d"
+},
+{
+"subject": "info:fedora/uuid:b3e1a8e7-a8ab-43fd-999d-f317a4e68988"
+},
+{
+"subject": "info:fedora/uuid:ca2491fc-a372-4adc-afe0-2f832fcc7082"
+},
+{
+"subject": "info:fedora/uuid:ff7e9761-bdc3-4b52-87e7-1919480c4a30"
+},
+{
+"subject": "info:fedora/uuid:b4cbb8d5-2be1-433a-9bad-b6b82c568f76"
+},
+{
+"subject": "info:fedora/uuid:c5ed8c80-b8a0-4a50-9628-f67cd5a44f86"
+},
+{
+"subject": "info:fedora/uuid:2f66e841-633b-4e20-a2b1-d5715480ee86"
+},
+{
+"subject": "info:fedora/uuid:7474d10d-4a92-48f3-ae8f-a0b4b2fd6ebb"
+},
+{
+"subject": "info:fedora/uuid:b16d2237-98ec-44c9-9da8-acc58d7c6960"
+},
+{
+"subject": "info:fedora/uuid:d9232e82-20fb-4087-a8e7-0aab500b1de3"
+},
+{
+"subject": "info:fedora/uuid:4abc37c5-24ae-4a73-afdf-e5617087af1b"
+},
+{
+"subject": "info:fedora/uuid:7040311f-6a6e-44d2-be47-b1d895380099"
+},
+{
+"subject": "info:fedora/uuid:40e122d4-5bdf-4cf4-b23b-5d7286ede4c0"
+},
+{
+"subject": "info:fedora/uuid:e5acc4b0-968e-45a8-938a-16a8b0f38570"
+},
+{
+"subject": "info:fedora/uuid:880de6eb-8d03-4949-9487-c6e4cefc49ab"
+},
+{
+"subject": "info:fedora/uuid:19a90c3a-1758-4c05-8f31-fc6a15f17b61"
+},
+{
+"subject": "info:fedora/uuid:a0eea5cc-ad28-4d1e-b69c-6ad21f9fe159"
+},
+{
+"subject": "info:fedora/uuid:c9ea6a62-2978-4902-aa16-03c6cb78ee49"
+},
+{
+"subject": "info:fedora/uuid:f3386f8b-c6dc-4f55-abc7-32c6af5fb4bf"
+},
+{
+"subject": "info:fedora/uuid:ea629e3f-048b-4311-b68d-c3b6c0b0ea5d"
+},
+{
+"subject": "info:fedora/uuid:f37ccc5f-8ed6-4b00-b9e3-28c4bb4ec60a"
+},
+{
+"subject": "info:fedora/uuid:fc252c65-b434-41bd-af7f-5b22af1b4336"
+},
+{
+"subject": "info:fedora/uuid:1d0ece45-a2ae-4f44-bb30-9b4d0ae4752d"
+},
+{
+"subject": "info:fedora/uuid:6274decf-ded3-4d33-a489-ef23cfe53c90"
+},
+{
+"subject": "info:fedora/uuid:3eb3ce32-f730-4b55-8840-90f268557278"
+},
+{
+"subject": "info:fedora/uuid:e316dd66-728e-4831-a4a3-a1e7f9b24141"
+},
+{
+"subject": "info:fedora/uuid:9e16d66f-5412-45c5-a7e1-fce415a39760"
+},
+{
+"subject": "info:fedora/uuid:addfb69d-602c-43e3-ab18-6e6d3b269076"
+},
+{
+"subject": "info:fedora/uuid:aa08ba72-8bed-4917-9ecd-61110047d165"
+},
+{
+"subject": "info:fedora/uuid:f56d153b-8f12-4469-be86-91eb00ec4ef9"
+},
+{
+"subject": "info:fedora/uuid:09486ae2-a737-40ff-a2e5-3f4d4e6767a3"
+},
+{
+"subject": "info:fedora/uuid:1bdd4765-ac3c-4e2e-a060-10c8d879024c"
+},
+{
+"subject": "info:fedora/uuid:6d311355-6981-4908-bb32-b667043cc2fb"
+},
+{
+"subject": "info:fedora/uuid:daacf8b2-83d8-463e-bcfd-d03dba620124"
+},
+{
+"subject": "info:fedora/uuid:45383b65-a5d0-4e99-8262-a16b22bdfb91"
+},
+{
+"subject": "info:fedora/uuid:207235d5-2ea5-4724-92fd-924fa0ccd4ed"
+},
+{
+"subject": "info:fedora/uuid:cfa342b3-7cb8-492b-8bc2-13835388c733"
+},
+{
+"subject": "info:fedora/uuid:be20417b-e8f0-4f11-be8e-b2cf9e1bccc3"
+},
+{
+"subject": "info:fedora/uuid:dd82ee77-5292-4435-a98f-a707f7613cd8"
+},
+{
+"subject": "info:fedora/uuid:9e619a66-6277-48c2-8a2e-24f8206e52b3"
+},
+{
+"subject": "info:fedora/uuid:f540ee27-446b-4a04-9140-799085397afa"
+},
+{
+"subject": "info:fedora/uuid:a3357b7c-7f08-4074-b914-6f06ce6ce01d"
+},
+{
+"subject": "info:fedora/uuid:eee99621-62fb-4e1e-bc2f-ba0e0534a5dd"
+},
+{
+"subject": "info:fedora/uuid:55f58824-8e1d-4f2c-b26d-dadc1b55d7d1"
+},
+{
+"subject": "info:fedora/uuid:dac46a9b-3e1a-45ce-85d9-930bd8ad193a"
+},
+{
+"subject": "info:fedora/uuid:cf30dcaa-fc46-459f-b722-24983da7747b"
+},
+{
+"subject": "info:fedora/uuid:026d8e04-b8a4-4923-b1d5-52918d17ec65"
+},
+{
+"subject": "info:fedora/uuid:92235b41-44a3-4d53-99f4-fc7018519b5d"
+},
+{
+"subject": "info:fedora/uuid:3d458a13-ce61-4ae4-bc93-5a7db3bb371d"
+},
+{
+"subject": "info:fedora/uuid:4da33f5e-25d2-4959-8e8e-5f43ce458bac"
+},
+{
+"subject": "info:fedora/uuid:d4adbae2-3dd8-43d8-a997-a2f0ecddc450"
+},
+{
+"subject": "info:fedora/uuid:2a0a4a88-782a-4746-b2e3-97c6d3667355"
+},
+{
+"subject": "info:fedora/uuid:6ecb8902-6d42-4a02-85a6-b5fc5881c7ef"
+},
+{
+"subject": "info:fedora/uuid:98a88912-b54c-4c6f-bbf4-8d6ca94ecd3e"
+},
+{
+"subject": "info:fedora/uuid:df2b5728-9307-4558-950b-27d127946ea4"
+},
+{
+"subject": "info:fedora/uuid:96aa9405-133e-4e27-9bb1-cf49e05aba4e"
+},
+{
+"subject": "info:fedora/uuid:24f86020-1a3b-4533-882a-24dcbacce8dc"
+},
+{
+"subject": "info:fedora/uuid:1c33f6d6-2824-4935-b52e-bd7d4b26f35e"
+},
+{
+"subject": "info:fedora/uuid:db0c0e86-e493-4f11-b72e-414b8c1915e6"
+},
+{
+"subject": "info:fedora/uuid:c44354bc-5a93-4fce-a716-bb0a63131901"
+},
+{
+"subject": "info:fedora/uuid:28425a0e-cd08-4a0a-b978-74adc4901a58"
+},
+{
+"subject": "info:fedora/uuid:936168ab-f49a-410a-9e1b-80c7ad7cf556"
+},
+{
+"subject": "info:fedora/uuid:689fc145-d5e9-4081-8ff3-5f129a0af908"
+},
+{
+"subject": "info:fedora/uuid:283098ce-e24d-4099-8826-07dcc75381f2"
+},
+{
+"subject": "info:fedora/uuid:bc3632b8-321a-4751-8797-80b40098ec27"
+},
+{
+"subject": "info:fedora/uuid:0d0a0b0d-0b1f-44c8-8ee0-752abb4bf8d0"
+},
+{
+"subject": "info:fedora/uuid:c75d4896-c5a8-42b8-a166-ffcd4166fc09"
+},
+{
+"subject": "info:fedora/uuid:01c0340b-8510-4f16-9add-301f5d575255"
+},
+{
+"subject": "info:fedora/uuid:cbc675b5-4bbc-4c19-92e5-f9d9940788ce"
+},
+{
+"subject": "info:fedora/uuid:81ccede7-a268-4c7a-9bf8-a2b68634846d"
+},
+{
+"subject": "info:fedora/uuid:ced64944-7af7-411c-aae9-410d504e89ab"
+},
+{
+"subject": "info:fedora/uuid:8313d13c-a63e-4fea-a6b4-a4e218ca7ca1"
+},
+{
+"subject": "info:fedora/uuid:995b3390-4a81-41c7-af72-1423719261d5"
+},
+{
+"subject": "info:fedora/uuid:8c2d0047-1d48-48e1-8d65-c6c4311e2aba"
+},
+{
+"subject": "info:fedora/uuid:4783add3-81c1-4071-998f-d78828c56566"
+},
+{
+"subject": "info:fedora/uuid:9d66347c-dfca-49d9-b938-492f0ae4db70"
+},
+{
+"subject": "info:fedora/uuid:db686bed-c27b-4766-9acb-1a572a483514"
+},
+{
+"subject": "info:fedora/uuid:d7ef9008-abda-4ad1-a137-fdcfaaf326ae"
+},
+{
+"subject": "info:fedora/uuid:0238fceb-5538-4a7b-903d-5952bf777286"
+},
+{
+"subject": "info:fedora/uuid:26782633-ec77-4ba0-bff4-06cf9b196d8a"
+},
+{
+"subject": "info:fedora/fedora-system:ServiceDefinition-3.0"
+},
+{
+"subject": "info:fedora/uuid:930ec18c-aa77-44f2-9bcd-c06e59e6e524"
+},
+{
+"subject": "info:fedora/uuid:c283d2ff-e01b-4e98-8a5e-0fe409a6a4d9"
+},
+{
+"subject": "info:fedora/uuid:2e6e56a4-e4a7-49f2-9ab6-c2c0a01eb606"
+},
+{
+"subject": "info:fedora/uuid:06ef8a41-ae53-4369-9356-3551420825c5"
+},
+{
+"subject": "info:fedora/uuid:b8c18800-89e4-4ccd-a5c6-bc718dc0df12"
+},
+{
+"subject": "info:fedora/uuid:77cce4c0-b4d3-4f81-8327-ef6d54b2c353"
+},
+{
+"subject": "info:fedora/uuid:e3b22e04-77ed-4046-8054-7c4896ab9e23"
+},
+{
+"subject": "info:fedora/uuid:d2670132-e3ad-483e-92a6-f7729e548225"
+},
+{
+"subject": "info:fedora/uuid:26dd4962-7cc0-434b-9188-cb8ac2113126"
+},
+{
+"subject": "info:fedora/uuid:729f7487-4a48-4886-938f-058daa4ade89"
+},
+{
+"subject": "info:fedora/uuid:805711fd-ba09-4147-ac11-24a7975f0b6c"
+},
+{
+"subject": "info:fedora/uuid:f2d95e54-1d48-4544-9a12-82e360f4f961"
+},
+{
+"subject": "info:fedora/uuid:cdad9c6e-c33e-4b24-b230-f2308234745f"
+},
+{
+"subject": "info:fedora/uuid:f09bf0c5-5017-4f9d-a08f-7c8aaf126fce"
+},
+{
+"subject": "info:fedora/uuid:3ca10e8a-b8e2-479c-881f-800999d16a16"
+},
+{
+"subject": "info:fedora/uuid:fcd61930-d47d-4bb0-b23a-7545dd249098"
+},
+{
+"subject": "info:fedora/uuid:46dfd294-f080-4f06-902f-c83887277341"
+},
+{
+"subject": "info:fedora/uuid:c6e17cc5-f7a3-4387-be17-949b97a429e7"
+},
+{
+"subject": "info:fedora/uuid:ff74c170-518a-40a5-be85-191ec5bb32d7"
+},
+{
+"subject": "info:fedora/uuid:fc75920a-2fcd-4786-b1a5-70c347db17a7"
+},
+{
+"subject": "info:fedora/uuid:3bdb2da2-ab5a-49a0-abb0-dc77779968da"
+},
+{
+"subject": "info:fedora/uuid:9cac4a72-73d4-46d0-a320-dab367967de2"
+},
+{
+"subject": "info:fedora/uuid:733dd791-3868-4575-a1e6-3de9497ebd1c"
+},
+{
+"subject": "info:fedora/uuid:36f64e08-941b-43d7-b410-cdb016eef53f"
+},
+{
+"subject": "info:fedora/uuid:59d59e07-eb4d-46b3-a7c9-72cd12102b2d"
+},
+{
+"subject": "info:fedora/uuid:cd842ed5-57bb-4191-913b-1d5ee9c85c52"
+},
+{
+"subject": "info:fedora/uuid:34809a86-758c-4012-8831-52a09be61701"
+},
+{
+"subject": "info:fedora/uuid:8776d7be-f65f-4e25-b6ee-df23975fdb39"
+},
+{
+"subject": "info:fedora/uuid:83424e65-1014-43d4-9440-fcf56a4eb098"
+},
+{
+"subject": "info:fedora/uuid:76611d29-509f-4b87-8c2e-99cc732df966"
+},
+{
+"subject": "info:fedora/uuid:e06bea4b-c8cb-44dc-9a07-ee8c3ca41448"
+},
+{
+"subject": "info:fedora/uuid:981bf5f0-1390-48ca-9fff-2255b695955a"
+},
+{
+"subject": "info:fedora/uuid:d9fe97e1-f13e-4617-89c5-618bb37a15a2"
+},
+{
+"subject": "info:fedora/uuid:03a6a69b-90f9-413d-9c2a-c294831899ce"
+},
+{
+"subject": "info:fedora/uuid:8440504c-153c-458d-a76a-9a54e7f26802"
+},
+{
+"subject": "info:fedora/uuid:36dd77c9-842e-471f-b735-51c029a0042f"
+},
+{
+"subject": "info:fedora/uuid:b29cf66a-9823-4aac-b2ab-10b629dd36b6"
+},
+{
+"subject": "info:fedora/fedora-system:ContentModel-3.0"
+},
+{
+"subject": "info:fedora/uuid:f4a4280f-fda0-462e-9493-4ecd38924bba"
+},
+{
+"subject": "info:fedora/uuid:bc2915dc-195d-4675-8214-9522e5577a80"
+},
+{
+"subject": "info:fedora/uuid:6f0586d3-7302-4650-9fe7-8254b1e7e1f0"
+},
+{
+"subject": "info:fedora/uuid:62bb9382-1c50-47f3-8f59-66924cc31760"
+},
+{
+"subject": "info:fedora/uuid:e97b51ad-b83f-4d4d-bb6a-f7bafdee8231"
+},
+{
+"subject": "info:fedora/uuid:0ac71392-4c95-4499-9179-5343faff68d0"
+},
+{
+"subject": "info:fedora/uuid:351effff-7e3b-4752-b102-c1c20c4ce5cd"
+},
+{
+"subject": "info:fedora/uuid:4025228f-d71b-43e7-b854-7a368ccb7cb3"
+},
+{
+"subject": "info:fedora/uuid:002e5f6b-543e-4396-a913-c45e9f5cb84c"
+},
+{
+"subject": "info:fedora/uuid:364ab7ef-b0e5-4224-9999-f2eb1258b80b"
+},
+{
+"subject": "info:fedora/uuid:254aa8c8-a68f-401a-8a32-432d26717b25"
+},
+{
+"subject": "info:fedora/fedora-system:ServiceDeployment-3.0"
+},
+{
+"subject": "info:fedora/uuid:7fe1570e-1592-46bf-8219-ed4efefed2cc"
+},
+{
+"subject": "info:fedora/uuid:833ed979-cdbc-4505-bb07-4a38b32de09e"
+},
+{
+"subject": "info:fedora/uuid:87c510cd-7fec-4366-b9d3-27561eb8317d"
+},
+{
+"subject": "info:fedora/uuid:7f9adbb3-404e-4a59-a1d6-99d1aaf29c1e"
+},
+{
+"subject": "info:fedora/uuid:29fba862-dc38-4235-aa14-8c712141c792"
+},
+{
+"subject": "info:fedora/uuid:7a70b1f7-aa41-4404-a0a6-34fbc2989b5c"
+},
+{
+"subject": "info:fedora/uuid:397e625f-9492-4f4a-8fa5-a41a53cf80f7"
+}
+]
+}
