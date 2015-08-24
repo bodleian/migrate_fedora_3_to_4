@@ -6,7 +6,7 @@ module Connector
   class ItemXmlTest < ActiveSupport::TestCase
     
     def test_get_xml
-      stub_request(:get, "#{stub_url_root}/objects/#{object_id.identifier}/objectXML").
+      stub_request(:get, "#{stub_url_root}/objects/#{item.identifier}/objectXML").
         to_return(:status => 200, :body => item_data)
 
       
@@ -16,12 +16,12 @@ module Connector
         username: username,
         password: password
       )
-      xml = connection.get_xml_for object_id.identifier
+      xml = connection.get_xml_for item.identifier
       assert_equal item_data, xml
     end
     
-    def object_id
-      object_ids :one
+    def item
+      items :one
     end
     
     def fedora_root

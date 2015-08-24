@@ -5,9 +5,9 @@ module Process
     
     def test_run
       stub_call_to_get_ids       
-      ObjectId.delete_all
+      Item.delete_all
       
-      assert_difference 'ObjectId.count', id_list_json_valid_id_count do
+      assert_difference 'Item.count', id_list_json_valid_id_count do
         ImportFedora3Ids.run(
           fedora_root: 'http://example.com',
           username: username,

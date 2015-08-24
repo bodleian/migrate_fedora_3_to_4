@@ -16,7 +16,7 @@ module Process
     def self.run(args)
       connection = Connector::FedoraRisearch.new(args)
       data = connection.send_sparql sparql_to_get_ids
-      ObjectId.populate JSON.parse(data)
+      Item.populate JSON.parse(data)
     end
     
     def self.sparql_to_get_ids

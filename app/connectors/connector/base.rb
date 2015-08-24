@@ -1,7 +1,7 @@
 
 module Connector
   class Base
-
+    
     attr_accessor :fedora_root, :username, :password, :uri
     
     def initialize(args)
