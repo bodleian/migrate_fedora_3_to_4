@@ -24,25 +24,24 @@ module Connector
       assert_equal '150', result
     end
     
+    def test_send_sparql_using_defaults
+      @options = { username: 'foo', password: 'bar'}
+      test_send_sparql
+    end
+    
     def fedora_risearch
       @fedora_risearch ||= FedoraRisearch.new({base_url: base_url}.merge(options))
     end
     
     def options
-      {
+      @options ||= {
         username: 'foo',
         password: 'bar'
       }.merge(options_for_stub)
     end
     
     def options_for_stub
-      @options_for_stub ||= {
-        type: 'tuples',
-        lang: 'itql',
-        format: 'CSV',
-        limit: '100',
-        dt: 'on'
-      }
+      @options_for_stub ||= FedoraRisearch::DEFAULT_OPTIONS
     end
     
     def base_url

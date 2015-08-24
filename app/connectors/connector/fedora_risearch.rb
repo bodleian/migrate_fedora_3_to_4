@@ -1,10 +1,25 @@
-
-
+# The FedoraRiscearch connector is used to gather data from the Fedora 3 instance,
+# via the risearch interface. This is done by posting SPARQL queries to 
+# 
+#   <fedora_root>/risearch
+#
+# For example: http://localhost:8080/fedora3/risearch
+#
 module Connector
   class FedoraRisearch
+    
+    DEFAULT_OPTIONS = {
+      type: 'tuples',
+      lang: 'itql',
+      format: 'json',
+      limit: '',
+      dt: 'on'
+    }
+    
     attr_accessor :base_url, :type, :lang, :format, :limit, :dt, :username, :password
     
     def initialize(args)
+      args = DEFAULT_OPTIONS.merge args
       @base_url = args[:base_url]
           @type = args[:type]
           @lang = args[:lang]
@@ -28,7 +43,7 @@ module Connector
       response = Net::HTTP.new(uri.host, uri.port).start {|http| http.request(request) }
       response.body
     end
-    
+     
     def uri
       URI(base_url)
     end
