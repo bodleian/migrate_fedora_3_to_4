@@ -11,27 +11,8 @@ class ActiveSupport::TestCase
     @id_list_json ||= build_id_list_json
   end
   
-  # data/dev_site_list.json contains json constructed by querying
-  #  
-  #   POST <fedora_root>/risearch
-  #   
-  # Where fedora_root is http://localhost:8080/fedora3 on this VM. 
-  # So post to http://localhost:8080/fedora3/risearch
-  #
-  # With the query:
-  #
-  #  type:tuples
-  #  lang:itql
-  #  format:CSV
-  #  limit:
-  #  dt:on
-  #  query:select $subject from <#ri> where { $subject <info:fedora/fedora-system:def/model#hasModel> $object}
-  #
   def build_id_list_json
-    local_path = 'data/dev_site_list.json'
-    path = File.expand_path local_path, File.dirname(__FILE__)
-    raise "#{local_path} missing - unable to build id_list json" unless File.exist?(path)
-    text = File.read path
+    text = get_content_of 'data/dev_site_list.json'
     JSON.parse text
   end
   
@@ -41,5 +22,15 @@ class ActiveSupport::TestCase
   
   def sparql_to_get_id_list
     'select $subject from <#ri> where { $subject <info:fedora/fedora-system:def/model#hasModel> $object}'
+  end
+  
+  def build_item_xml
+    get_content_of 'data/item.xml'
+  end
+  
+  def get_content_of(local_path)
+    path = File.expand_path local_path, File.dirname(__FILE__)
+    raise "#{local_path} missing - unable to get content of file" unless File.exist?(path)
+    File.read path
   end
 end

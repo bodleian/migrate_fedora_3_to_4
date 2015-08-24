@@ -18,6 +18,9 @@ module Connector
     
     attr_accessor :base_url, :type, :lang, :format, :limit, :dt, :username, :password
     
+    # base_url should be the risearch url: <fedora_root>/risearch
+    # username and password should be those of a user for the Fedora 
+    # instance hosting risearch.
     def initialize(args)
       args = DEFAULT_OPTIONS.merge args
       @base_url = args[:base_url]
@@ -30,6 +33,7 @@ module Connector
       @password = args[:password]
     end
     
+    # TODO catch failures to connect
     def send_sparql(sparql)
       request.basic_auth username, password
       request.set_form_data(
