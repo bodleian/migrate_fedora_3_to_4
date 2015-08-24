@@ -53,7 +53,7 @@ module Connector
     end
     
     def sparql
-      'select $subject from <#ri> where { $subject <info:fedora/fedora-system:def/model#hasModel> $object}'
+      sparql_to_get_id_list
     end
     
   end

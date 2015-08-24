@@ -34,4 +34,12 @@ class ActiveSupport::TestCase
     text = File.read path
     JSON.parse text
   end
+  
+  def id_list_json_valid_id_count
+    146
+  end
+  
+  def sparql_to_get_id_list
+    'select $subject from <#ri> where { $subject <info:fedora/fedora-system:def/model#hasModel> $object}'
+  end
 end

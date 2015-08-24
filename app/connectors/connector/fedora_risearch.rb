@@ -40,7 +40,6 @@ module Connector
         dt: dt,
         query: sparql     
       )
-      response = Net::HTTP.new(uri.host, uri.port).start {|http| http.request(request) }
       response.body
     end
      
@@ -50,6 +49,10 @@ module Connector
     
     def request
       @request ||= Net::HTTP::Post.new(uri.path)
+    end
+    
+    def response
+      @response ||= Net::HTTP.new(uri.host, uri.port).start {|http| http.request(request) }
     end
     
   end
