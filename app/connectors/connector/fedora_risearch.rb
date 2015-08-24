@@ -6,7 +6,7 @@
 # For example: http://localhost:8080/fedora3/risearch
 #
 module Connector
-  class FedoraRisearch
+  class FedoraRisearch < Base
     
     DEFAULT_OPTIONS = {
       type: 'tuples',
@@ -16,21 +16,21 @@ module Connector
       dt: 'on'
     }
     
-    attr_accessor :base_url, :type, :lang, :format, :limit, :dt, :username, :password
+    attr_accessor :type, :lang, :format, :limit, :dt
     
-    # base_url should be the risearch url: <fedora_root>/risearch
+    # url should be the risearch url: <fedora_url>/risearch
     # username and password should be those of a user for the Fedora 
     # instance hosting risearch.
     def initialize(args)
       args = DEFAULT_OPTIONS.merge args
-      @base_url = args[:base_url]
-          @type = args[:type]
-          @lang = args[:lang]
-        @format = args[:format]
-         @limit = args[:limit]
-            @dt = args[:dt]
-      @username = args[:username]
-      @password = args[:password]
+
+        @type = args[:type]
+        @lang = args[:lang]
+      @format = args[:format]
+       @limit = args[:limit]
+          @dt = args[:dt]
+          
+      super
     end
     
     # TODO catch failures to connect
@@ -48,16 +48,13 @@ module Connector
     end
      
     def uri
-      URI(base_url)
+      URI(File.join(fedora_root, 'risearch'))
     end
     
     def request
       @request ||= Net::HTTP::Post.new(uri.path)
     end
     
-    def response
-      @response ||= Net::HTTP.new(uri.host, uri.port).start {|http| http.request(request) }
-    end
-    
+
   end
 end

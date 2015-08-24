@@ -9,7 +9,7 @@ module Process
       
       assert_difference 'ObjectId.count', id_list_json_valid_id_count do
         ImportFedora3Ids.run(
-          base_url: 'http://example.com/risearch',
+          fedora_root: 'http://example.com',
           username: username,
           password: password
         )

@@ -30,7 +30,7 @@ module Connector
     end
     
     def fedora_risearch
-      @fedora_risearch ||= FedoraRisearch.new({base_url: base_url}.merge(options))
+      @fedora_risearch ||= FedoraRisearch.new({fedora_root: fedora_root}.merge(options))
     end
     
     def options
@@ -44,8 +44,8 @@ module Connector
       @options_for_stub ||= FedoraRisearch::DEFAULT_OPTIONS
     end
     
-    def base_url
-      'http://example.com/risearch'
+    def fedora_root
+      'http://example.com'
     end
     
     def stub_url
