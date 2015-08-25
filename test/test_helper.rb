@@ -24,7 +24,7 @@ class ActiveSupport::TestCase
     'select $subject from <#ri> where { $subject <info:fedora/fedora-system:def/model#hasModel> $object}'
   end
   
-  def build_item_xml
+  def item_xml_from_file
     get_content_of 'data/item.xml'
   end
   

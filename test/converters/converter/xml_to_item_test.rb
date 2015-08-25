@@ -26,8 +26,12 @@ module Converter
       assert_equal expected, xml_to_item.fields
     end
     
+    def test_member_of
+      assert_equal 'article', xml_to_item.is_member_of
+    end
+    
     def xml_to_item
-      @xml_to_item ||= XmlToItem.new build_item_xml
+      @xml_to_item ||= XmlToItem.new item_xml_from_file
     end
   end
 end

@@ -41,7 +41,7 @@ module Connector
     end
     
     def item_data
-      @item_data ||= build_item_xml
+      @item_data ||= item_xml_from_file
     end
     
   end
