@@ -4,13 +4,13 @@ module Converter
   class XmlToItemTest < ActiveSupport::TestCase
     
     def test_properties
-      assert_equal 23, xml_to_item.properties.length
+      assert_equal 23, xml_to_item.property_values.length
       
       expected = ["title", "Public policy towards R&D in oligopolistic industries"]
-      assert_equal expected, xml_to_item.properties.first
+      assert_equal expected, xml_to_item.property_values.first
     end
     
-    def test_fields
+    def test_properties
       expected = {
         "title"=>"single", 
         "creator"=>"multi", 
@@ -23,7 +23,7 @@ module Converter
         "language"=>"single", 
         "relation"=>"multi"        
       }
-      assert_equal expected, xml_to_item.fields
+      assert_equal expected, xml_to_item.properties
     end
     
     def test_member_of

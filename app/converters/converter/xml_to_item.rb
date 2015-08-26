@@ -18,8 +18,8 @@ module Converter
     # 
     #   [ ['foo', 'x'], ['foo', 'y'], ['bar', 'z'] ]
     #
-    def properties
-      @properties ||= raw_dc_elements.collect{|e| [e.name, e.text]}
+    def property_values
+      @property_values ||= raw_dc_elements.collect{|e| [e.name, e.text]}
     end
     
     # Identifies all the property fields used in the item together with whether
@@ -31,14 +31,14 @@ module Converter
     # 
     #   {'foo' => 'multi', 'bar' => 'single'}
     #
-    def fields
-      @fields  ||= raw_dc_elements.inject({}) do |hash, element| 
+    def properties
+      @properties ||= raw_dc_elements.inject({}) do |hash, element| 
         hash[element.name] = hash[element.name] ? 'multi' : 'single'
         hash
       end
     end
     
-    # Identifies with object type the item is a member of
+    # Identifies which object type the item is a member of
     def is_member_of
       @is_member_of ||= is_member_of_element.to_s.split(':').last
     end
