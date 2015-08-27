@@ -1,4 +1,9 @@
-<h1>Items <%= @item.identifier %></h1>
+<h1>Item: <%= @item.identifier %></h1>
+
+<p>
+  Object Type: 
+  <%= link_to @item.object_model_name, @item.object_model %>
+</p>
 
 <h2>Property Values</h2>
 <table>
@@ -13,12 +18,3 @@
   </tr>
 <% end %>
 </table>
-
-<h2>Object Type: <%= @item.object_model_name %></h2>
-<% @item.properties.each do |property| %>
-<p>
-  property :<%= property.name %>, 
-  predicate: ::RDF::DC.<%= property.name %>, 
-  multiple: <%= property.multiple? %>
-</p>
-<% end %>
