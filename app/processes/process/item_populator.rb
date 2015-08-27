@@ -31,7 +31,7 @@ module Process
     end
     
     def assign_to_object_model
-      item.object_model = object_model
+      item.update_attribute :object_model, object_model
     end
     
     def assign_property_values

@@ -8,13 +8,13 @@
 module Connector
   class FedoraRisearch < Base
     
-    DEFAULT_OPTIONS = {
+    DEFAULT_OPTIONS = HashWithIndifferentAccess.new(
       type: 'tuples',
       lang: 'itql',
       format: 'json',
       limit: '',
       dt: 'on'
-    }
+    )
     
     attr_accessor :type, :lang, :format, :limit, :dt
     
@@ -29,7 +29,7 @@ module Connector
       @format = args[:format]
        @limit = args[:limit]
           @dt = args[:dt]
-          
+        
       super
     end
     
