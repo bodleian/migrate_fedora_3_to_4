@@ -1,0 +1,9 @@
+<h1>Object Model: <%= @object_model.name %></h1>
+
+<% @object_model.properties.each do |property| %>
+<p>
+  property :<%= property.name %>, 
+  predicate: ::RDF::DC.<%= property.name %>, 
+  multiple: <%= property.multiple? %>
+</p>
+<% end %>

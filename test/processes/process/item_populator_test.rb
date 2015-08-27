@@ -30,6 +30,13 @@ module Process
       assert property, "Property should have been added to item's object model"
     end
     
+    def test_add_properties_twice_does_not_create_duplicates
+      test_add_properties
+      assert_no_difference 'Property.count' do
+        item_populator.add_properties
+      end
+    end
+    
     def test_assign_to_object_model
       assert_difference 'ObjectModel.count' do
         item_populator.assign_to_object_model

@@ -44,7 +44,9 @@ module Process
     def add_properties
       assign_to_object_model
       item_data.properties.each do |name, multiple_type|
-        object_model.properties.create(name: name, multiple_type: multiple_type)
+       property = object_model.properties.find_or_create_by(name: name)
+       property.multiple_type = multiple_type
+       property.save
       end
     end
     

@@ -18,7 +18,7 @@
 <% @item.properties.each do |property| %>
 <p>
   property :<%= property.name %>, 
-  predicate: ::RDF::DC.title, 
+  predicate: ::RDF::DC.<%= property.name %>, 
   multiple: <%= property.multiple? %>
 </p>
 <% end %>
