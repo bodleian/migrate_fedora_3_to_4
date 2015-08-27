@@ -14,3 +14,6 @@
 
 # Ignore fedora temp files
 /fcrepo4-data
+
+# Ignore fedora config files
+/config/source_fedora.yml
