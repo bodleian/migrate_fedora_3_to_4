@@ -6,10 +6,7 @@ module Connector
   class ItemXmlTest < ActiveSupport::TestCase
     
     def test_get_xml
-      stub_request(:get, "#{stub_url_root}/objects/#{item.identifier}/objectXML").
-        to_return(:status => 200, :body => item_data)
-
-      
+      stub_call_to_fedora_to_get_xml_for(item)
       
       connection = Connector::ItemXml.new(
         fedora_root: fedora_root,
@@ -22,26 +19,6 @@ module Connector
     
     def item
       items :one
-    end
-    
-    def fedora_root
-      'http://example.com'
-    end
-    
-    def stub_url_root
-      "http://#{username}:#{password}@example.com"
-    end
-    
-    def username
-      'Foo'
-    end
-      
-    def password
-      'password'
-    end
-    
-    def item_data
-      @item_data ||= item_xml_from_file
     end
     
   end

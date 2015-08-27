@@ -2,8 +2,8 @@
 
 one:
   identifier: "uuid:<%= SecureRandom.uuid %>"
-  object_model: article
+  object_model: foo
 
 two:
   identifier: "uuid:<%= SecureRandom.uuid %>"
-  object_model: article
+  object_model: bar

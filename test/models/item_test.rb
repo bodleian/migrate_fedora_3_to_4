@@ -17,4 +17,12 @@ class ItemTest < ActiveSupport::TestCase
     end
   end
   
+  def test_object_model_name
+    assert_equal item.object_model.name, item.object_model_name
+  end
+  
+  def item
+    items(:one)
+  end
+  
 end

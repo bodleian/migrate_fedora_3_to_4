@@ -6,8 +6,7 @@ module Converter
     def test_properties
       assert_equal 23, xml_to_item.property_values.length
       
-      expected = ["title", "Public policy towards R&D in oligopolistic industries"]
-      assert_equal expected, xml_to_item.property_values.first
+      assert_equal property_value_in_xml_file, xml_to_item.property_values.first
     end
     
     def test_properties

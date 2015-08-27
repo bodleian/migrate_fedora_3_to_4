@@ -28,9 +28,43 @@ class ActiveSupport::TestCase
     get_content_of 'data/item.xml'
   end
   
+  def uuid_of_item_in_xml_file
+    'uuid:0d0a0b0d-0b1f-44c8-8ee0-752abb4bf8d0'
+  end
+  
+  def property_value_in_xml_file
+    ["title", "Public policy towards R&D in oligopolistic industries"]
+  end
+  
   def get_content_of(local_path)
     path = File.expand_path local_path, File.dirname(__FILE__)
     raise "#{local_path} missing - unable to get content of file" unless File.exist?(path)
     File.read path
   end
+  
+  def fedora_root
+    'http://example.com'
+  end
+
+  def stub_url_root
+    "http://#{username}:#{password}@example.com"
+  end
+
+  def username
+    'Foo'
+  end
+
+  def password
+    'password'
+  end
+
+  def item_data
+    @item_data ||= item_xml_from_file
+  end
+  
+  def stub_call_to_fedora_to_get_xml_for(item)
+    stub_request(:get, "#{stub_url_root}/objects/#{item.identifier}/objectXML").
+        to_return(:status => 200, :body => item_data)
+  end
+  
 end

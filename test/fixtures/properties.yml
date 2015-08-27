@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: title
+  name: wibble
   multiple_type: single
-  object_model: article
+  object_model: foo
 
 two:
-  name: creator
-  multiple_type: multiple
-  object_model_id: article
+  name: wobble
+  multiple_type: multi
+  object_model_id: foo

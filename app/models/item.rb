@@ -2,6 +2,10 @@
 class Item < ActiveRecord::Base
   
   belongs_to :object_model
+  delegate :name, to: :object_model, prefix: true
+  
+  has_many :properties, through: :object_model
+  has_many :property_values
   
   def self.populate(hash)
     return unless hash['results']
