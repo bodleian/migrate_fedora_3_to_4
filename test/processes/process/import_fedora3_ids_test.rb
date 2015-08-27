@@ -8,23 +8,15 @@ module Process
       
       assert_difference 'Item.count', id_list_json_valid_id_count do
         ImportFedora3Ids.run(
-          fedora_root: 'http://example.com',
+          fedora_root: fedora_root,
           username: username,
           password: password
         )
       end
     end
-    
-    def username
-      'Foo'
-    end
-      
-    def password
-      'password'
-    end
-    
+        
     def stub_call_to_get_ids
-      url = "http://#{username}:#{password}@example.com/risearch"
+      url = "#{stub_url_root}/risearch"
       options = Connector::FedoraRisearch::DEFAULT_OPTIONS
       stub_request(:post, url).
          with(:body => {query: sparql_to_get_id_list}.merge(options)).

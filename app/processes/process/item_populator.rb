@@ -1,7 +1,21 @@
-
+# Manages the process of populating an item with information defined in
+# the fedora details XML for that object
 module Process
   class ItemPopulator
     
+    # Typical usage:
+    #   ItemPopulator.do_for(
+    #     item,
+    #     fedora_root: 'http://localhost:8080/fedora,
+    #     username: 'fedoraAdmin',
+    #     password: 'password'
+    #   )
+    #
+    # This will gather the XML describing this item, from fedora. Than the data
+    # contained in the XML will be used to update the item and create
+    # sub-objects (for example, properties and propery_values) where this
+    # data is stored.
+    #
     def self.do_for item, args
       item_populator = new(item, args)
       item_populator.assign_property_values

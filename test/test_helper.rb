@@ -36,18 +36,30 @@ class ActiveSupport::TestCase
     ["title", "Public policy towards R&D in oligopolistic industries"]
   end
   
+  def fedora_config_yml_path
+    full_path_to('data/fedora_config.yml')
+  end
+  
+  def fedora_config_yml
+    YAML.load_file fedora_config_yml_path
+  end
+  
   def get_content_of(local_path)
-    path = File.expand_path local_path, File.dirname(__FILE__)
+    path = full_path_to(local_path)
     raise "#{local_path} missing - unable to get content of file" unless File.exist?(path)
     File.read path
   end
   
+  def full_path_to(local_path)
+    File.expand_path local_path, File.dirname(__FILE__)
+  end
+  
   def fedora_root
-    'http://example.com'
+    'http://example.com/fedora'
   end
 
   def stub_url_root
-    "http://#{username}:#{password}@example.com"
+    "http://#{username}:#{password}@example.com/fedora"
   end
 
   def username

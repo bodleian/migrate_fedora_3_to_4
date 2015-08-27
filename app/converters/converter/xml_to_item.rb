@@ -1,4 +1,4 @@
-
+# Extracts data from the XML that describes an item.
 module Converter
   class XmlToItem
     
