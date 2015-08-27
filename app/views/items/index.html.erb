@@ -1,5 +1,5 @@
 <h1>Items<%= ": #{@object_model.name}" if @object_model %></h1>
-<ul>
+<ul class="list-unstyled">
 <% @items.each do |item| %>
   <li><%= link_to item.identifier, item %></li>
 <% end %>
