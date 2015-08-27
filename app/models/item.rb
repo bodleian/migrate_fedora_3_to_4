@@ -1,6 +1,8 @@
 # An object id is used to store object ids gathered from the fedora 3 instance
 class Item < ActiveRecord::Base
   
+  belongs_to :object_model
+  
   def self.populate(hash)
     return unless hash['results']
     hash['results'].each do |result|

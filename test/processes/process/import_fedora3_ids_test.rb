@@ -5,7 +5,6 @@ module Process
     
     def test_run
       stub_call_to_get_ids       
-      Item.delete_all
       
       assert_difference 'Item.count', id_list_json_valid_id_count do
         ImportFedora3Ids.run(

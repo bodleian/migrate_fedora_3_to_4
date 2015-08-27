@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: title
+  value: This is a title
+  item: one
+
+two:
+  name: creator
+  value: Joe Bloggs
+  item: one

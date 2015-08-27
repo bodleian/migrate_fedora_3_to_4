@@ -11,12 +11,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150824144549) do
+ActiveRecord::Schema.define(version: 20150826144744) do
 
   create_table "items", force: :cascade do |t|
-    t.string   "identifier", limit: 255
+    t.string   "identifier",      limit: 255
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.integer  "object_model_id", limit: 4
+  end
+
+  add_index "items", ["object_model_id"], name: "index_items_on_object_model_id", using: :btree
+
+  create_table "object_models", force: :cascade do |t|
+    t.string   "name",       limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
 
+  create_table "properties", force: :cascade do |t|
+    t.string   "name",            limit: 255
+    t.string   "multiple_type",   limit: 255
+    t.integer  "object_model_id", limit: 4
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  add_index "properties", ["object_model_id"], name: "index_properties_on_object_model_id", using: :btree
+
+  create_table "property_values", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.text     "value",      limit: 65535
+    t.integer  "item_id",    limit: 4
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "property_values", ["item_id"], name: "index_property_values_on_item_id", using: :btree
+
+  add_foreign_key "items", "object_models"
+  add_foreign_key "properties", "object_models"
+  add_foreign_key "property_values", "items"
 end

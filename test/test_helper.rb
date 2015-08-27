@@ -12,7 +12,7 @@ class ActiveSupport::TestCase
   end
   
   def build_id_list_json
-    text = get_content_of 'data/dev_site_list.json'
+    text = get_content_of 'data/id_list.json'
     JSON.parse text
   end
   
