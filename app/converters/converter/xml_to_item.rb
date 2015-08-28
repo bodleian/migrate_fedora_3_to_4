@@ -16,10 +16,20 @@ module Converter
     #   
     # Will produce:
     # 
-    #   [ ['foo', 'x'], ['foo', 'y'], ['bar', 'z'] ]
+    #   [
+    #     { name: 'foo', value: 'x', namespace: 'dc'}, 
+    #     { name: 'foo', value: 'y', namespace: 'dc'}, 
+    #     { name: 'bar', value: 'z', namespace: 'dc'} 
+    #   ]
     #
     def property_values
-      @property_values ||= raw_dc_elements.collect{|e| [e.name, e.text]}
+      @property_values ||= raw_dc_elements.collect do|e| 
+        {
+          name: e.name, 
+          value: e.text,
+          namespace: 'dc'
+        }
+      end
     end
     
     # Identifies all the property fields used in the item together with whether

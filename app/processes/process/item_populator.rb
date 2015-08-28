@@ -38,8 +38,8 @@ module Process
     
     def assign_property_values
       item.property_values.destroy_all
-      item_data.property_values.each do |name, value|
-        item.property_values.create(name: name, value: value)
+      item_data.property_values.each do |params|
+        item.property_values.create(params)
       end
     end
     

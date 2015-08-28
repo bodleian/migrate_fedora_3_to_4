@@ -15,6 +15,7 @@
   </tr>
 <% @item.property_values.each do |property_value| %>
   <tr>
+    <td><%= property_value.namespace %></td>
     <td><%= property_value.name %></td>
     <td><%= property_value.value %></td>
   </tr>
