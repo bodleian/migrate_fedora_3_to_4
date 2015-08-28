@@ -5,20 +5,35 @@
 module Connector
   class ItemXmlTest < ActiveSupport::TestCase
     
-    def test_get_xml
-      stub_call_to_fedora_to_get_xml_for(item)
-      
-      connection = Connector::ItemXml.new(
+    def test_get_xml_for
+      stub_call_to_fedora_to_get_xml_for(item) 
+
+      xml = connection.get_xml_for item.identifier
+      assert_equal item_data_for(item), xml
+    end
+    
+    def test_get_xml_for_another_item
+      stub_call_to_fedora_to_get_xml_for(item) 
+      stub_call_to_fedora_to_get_xml_for(other_item) 
+      one = connection.get_xml_for item.identifier
+      two = connection.get_xml_for other_item.identifier
+      assert_not_equal one, two
+    end
+    
+    def other_item
+      @other_item ||= items :two
+    end
+    
+    def item
+      @item ||= items :one
+    end
+    
+    def connection
+      @connection ||= Connector::ItemXml.new(
         fedora_root: fedora_root,
         username: username,
         password: password
       )
-      xml = connection.get_xml_for item.identifier
-      assert_equal item_data, xml
-    end
-    
-    def item
-      items :one
     end
     
   end

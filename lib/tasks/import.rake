@@ -4,7 +4,7 @@ namespace :fedora3to4 do
     source_fedora_config = SourceFedoraConfig.new
     Process::ImportFedora3Ids.run source_fedora_config.args
     Item.all.each do |item|
-      Process::ItemPopulator.do_for(item, source_fedora_config.args)
+      Process::ItemPopulator.for(item, source_fedora_config.args)
       print '.'
     end
     puts "\nTask complete\n"

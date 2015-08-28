@@ -14,17 +14,21 @@ module Connector
     # An example item_identifier:
     #    uuid:2eade3a6-8b0e-4a20-913f-e212080cbd34
     def get_xml_for(item_identifier)
-      @uri = uri_for(item_identifier)
+      reset_request
+      @uri = URI(path_for(item_identifier))
       authenticate_request
       response.body
     end
     
     # An example url:
-    #    http://localhost:8080/fedora/objects/uuid:2eade3a6-8b0e-4a20-913f-e212080cbd34/objectXML
-    def uri_for(item_id)
-      uri = File.join fedora_root, 'objects', item_id, 'objectXML'
-      URI(uri)
-    end    
+    #    http://localhost:8080/fedora/objects/uuid:2eade3a6-8b0e-4a20-913f-e212080cbd34/objectXML  
+    def path_for(item_identifier)
+      File.join fedora_root, 'objects', item_identifier, 'objectXML'
+    end
+    
+    def request
+      @request ||= Net::HTTP::Get.new(uri.path)
+    end
     
   end
 end

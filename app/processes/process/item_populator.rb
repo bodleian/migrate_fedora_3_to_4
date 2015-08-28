@@ -4,7 +4,7 @@ module Process
   class ItemPopulator
     
     # Typical usage:
-    #   ItemPopulator.do_for(
+    #   ItemPopulator.for(
     #     item,
     #     fedora_root: 'http://localhost:8080/fedora,
     #     username: 'fedoraAdmin',
@@ -16,7 +16,7 @@ module Process
     # sub-objects (for example, properties and propery_values) where this
     # data is stored.
     #
-    def self.do_for item, args
+    def self.for item, args
       item_populator = new(item, args)
       item_populator.assign_property_values
       item_populator.add_properties

@@ -11,7 +11,7 @@ module Process
       assert_difference 'ObjectModel.count' do
         assert_difference 'item.property_values.count', values_defined_in_xml do
           assert_difference 'Property.count', properties_defined_in_xml do
-            ItemPopulator.do_for(
+            ItemPopulator.for(
               item,
               fedora_root: fedora_root,
               username: username,

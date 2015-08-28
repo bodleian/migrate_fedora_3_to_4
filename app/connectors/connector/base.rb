@@ -1,4 +1,4 @@
-
+# Abstract class, used to define methods common to a number of connectors.
 module Connector
   class Base
     
@@ -10,17 +10,16 @@ module Connector
          @password = args[:password]
     end
     
-   
-    def request
-      @request ||= Net::HTTP::Get.new(uri.path)
-    end
-    
     def response
-      @response ||= Net::HTTP.new(uri.host, uri.port).start {|http| http.request(request) }
+      Net::HTTP.new(uri.host, uri.port).start {|http| http.request(request) }
     end
     
     def authenticate_request
       request.basic_auth username, password
+    end
+    
+    def reset_request
+      @request = nil
     end
     
   end

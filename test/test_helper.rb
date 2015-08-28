@@ -74,9 +74,13 @@ class ActiveSupport::TestCase
     @item_data ||= item_xml_from_file
   end
   
+  def item_data_for(item)
+    item_data.gsub(/uuid\:0d0a0b0d\-0b1f\-44c8\-8ee0\-752abb4bf8d0/, item.identifier)
+  end
+  
   def stub_call_to_fedora_to_get_xml_for(item)
     stub_request(:get, "#{stub_url_root}/objects/#{item.identifier}/objectXML").
-        to_return(:status => 200, :body => item_data)
+        to_return(:status => 200, :body => item_data_for(item))
   end
   
 end

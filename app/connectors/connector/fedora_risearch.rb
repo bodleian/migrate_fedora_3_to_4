@@ -35,6 +35,7 @@ module Connector
     
     # TODO catch failures to connect
     def send_sparql(sparql)
+      reset_request
       request.basic_auth username, password
       request.set_form_data(
         type: type,
