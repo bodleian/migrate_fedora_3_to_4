@@ -35,6 +35,7 @@ end
 
 group :test do
   gem 'webmock'
+  gem 'mocha'
 end
 
 gem "twitter-bootstrap-rails"

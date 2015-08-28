@@ -57,7 +57,11 @@ module Process
     end
     
     def object_model
-      @object_model ||= ObjectModel.find_or_create_by(name: item_data.is_member_of)
+      @object_model ||= ObjectModel.find_or_create_by(name: object_model_name)
+    end
+    
+    def object_model_name
+      item_data.is_member_of || ObjectModel::UNKNOWN
     end
     
     def item_data

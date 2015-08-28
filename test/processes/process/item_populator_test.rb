@@ -45,6 +45,14 @@ module Process
       assert_equal 'article', item.object_model_name
     end
     
+    def test_assign_to_object_model_when_is_member_of_is_nil
+      Converter::XmlToItem.any_instance.stubs(:is_member_of).returns(nil)
+      assert_difference 'ObjectModel.count' do
+        item_populator.assign_to_object_model
+      end
+      assert_equal ObjectModel::UNKNOWN, item.object_model_name
+    end
+    
     def test_assign_property_values
       assert_difference 'item.property_values.count', values_defined_in_xml do
         item_populator.assign_property_values
