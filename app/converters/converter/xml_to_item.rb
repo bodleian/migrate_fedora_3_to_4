@@ -23,13 +23,7 @@ module Converter
     #   ]
     #
     def property_values
-      @property_values ||= raw_dc_elements.collect do|e| 
-        {
-          name: e.name, 
-          value: e.text,
-          namespace: 'dc'
-        }
-      end
+      @property_values ||= build_property_values.flatten
     end
     
     # Identifies all the property fields used in the item together with whether
@@ -53,10 +47,38 @@ module Converter
       @is_member_of ||= is_member_of_element.to_s.split(':').last
     end
     
+    def data_streams
+      {
+        'DC.1' => 'dc',
+        'DC1.0' => 'dc'
+      }
+    end
+    
     private
     def raw_dc_elements
       @raw_dc_elements ||= doc.xpath(
         '//foxml:datastreamVersion[@ID="DC.1"]//dc:*',
+        namespaces
+      )
+    end
+    
+    def build_property_values
+      data_streams.keys.collect do |datastream|
+        namespace = data_streams[datastream]
+        raw_dc_elements_for(datastream, namespace).collect do |e| 
+          {
+            name: e.name, 
+            value: e.text,
+            namespace: namespace,
+            datastream: datastream
+          }
+        end
+      end
+    end
+    
+    def raw_dc_elements_for(datastream, namespace)
+      doc.xpath(
+        "//foxml:datastreamVersion[@ID=\"#{datastream}\"]//#{namespace}:*",
         namespaces
       )
     end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150828140032) do
+ActiveRecord::Schema.define(version: 20150828144750) do
 
   create_table "items", force: :cascade do |t|
     t.string   "identifier",      limit: 255
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 20150828140032) do
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
     t.string   "namespace",  limit: 255
+    t.string   "datastream", limit: 255
   end
 
   add_index "property_values", ["item_id"], name: "index_property_values_on_item_id", using: :btree
