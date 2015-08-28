@@ -1,7 +1,9 @@
 <h1>Item: <%= @item.identifier %></h1>
 
-<p>
-  Object Type: 
+<%= link_to('Data source', @item.source_url, class: 'btn btn-info') if @item.source_url? %>
+
+<h2>Object Type</h2>
+<p class="lead">
   <%= link_to @item.object_model_name, @item.object_model %>
 </p>
 

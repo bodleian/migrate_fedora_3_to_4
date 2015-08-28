@@ -20,6 +20,8 @@ module Process
       item_populator = new(item, args)
       item_populator.assign_property_values
       item_populator.add_properties
+      item_populator.record_source_url
+      item.save
       item_populator
     end
     
@@ -31,7 +33,7 @@ module Process
     end
     
     def assign_to_object_model
-      item.update_attribute :object_model, object_model
+      item.object_model = object_model
     end
     
     def assign_property_values
@@ -48,6 +50,10 @@ module Process
        property.multiple_type = multiple_type
        property.save
       end
+    end
+    
+    def record_source_url
+      item.source_url = item_xml_connector.path_for item.identifier
     end
     
     def object_model

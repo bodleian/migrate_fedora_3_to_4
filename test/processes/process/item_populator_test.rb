@@ -20,6 +20,7 @@ module Process
           end
         end
       end
+      assert_match fedora_root, item.source_url
     end
     
     def test_add_properties
@@ -51,6 +52,11 @@ module Process
       name, value = property_value_in_xml_file
       property_value = item.property_values.find_by name: name
       assert_equal value, property_value.value
+    end
+    
+    def test_record_source_url
+      item_populator.record_source_url
+      assert_match fedora_root, item.source_url
     end
     
     def item
