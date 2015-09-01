@@ -3,7 +3,7 @@
 <% @object_model.properties.each do |property| %>
 <p>
   property :<%= property.name %>, 
-  predicate: ::RDF::<%= property.namespace.upcase %>.<%= property.name %>, 
+  predicate: ::RDF::<%= property.namespace.try(:upcase) %>.<%= property.name %>, 
   multiple: <%= property.multiple? %>,
   datastream: <%= property.datastream %>
 </p>

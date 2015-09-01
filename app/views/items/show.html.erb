@@ -7,20 +7,20 @@
   <%= link_to @item.object_model_name, @item.object_model %>
 </p>
 
-<h2>Property Values</h2>
+<% @item.property_values.group_by(&:datastream).each do |datastream, property_values| %>
+<h2>Datastream: <%= datastream  %></h2>
 <table class="table">
   <tr>
-    <th>Datastream</th>
-    <th>Namespace</th>
-    <th>Name</th>
+    <th>Namespace:Name</th>
     <th>Value<th>
   </tr>
-<% @item.property_values.each do |property_value| %>
+<%   property_values.each do |property_value| %>
   <tr>
-    <td><%= property_value.datastream %></td>
-    <td><%= property_value.namespace %></td>
-    <td><%= property_value.name %></td>
+    <td>
+      <%= property_value.namespace %>:<%= property_value.name %>
+    </td>
     <td><%= property_value.value %></td>
   </tr>
-<% end %>
+<%   end %>
 </table>
+<% end %>

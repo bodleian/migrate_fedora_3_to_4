@@ -4,8 +4,12 @@ one:
   name: title
   value: This is a title
   item: one
+  namespace: dc
+  datastream: x
 
 two:
   name: creator
   value: Joe Bloggs
   item: one
+  namespace: dc
+  datastream: x
