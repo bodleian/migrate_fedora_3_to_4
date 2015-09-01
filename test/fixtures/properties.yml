@@ -2,14 +2,14 @@
 
 one:
   name: wibble
-  multiple_type: single
+  multiple_type: false
   object_model: foo
   namespace: dc
   datastream: x
 
 two:
   name: wobble
-  multiple_type: multi
+  multiple_type: true
   object_model_id: foo
   namespace: dc
   datastream: x

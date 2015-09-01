@@ -73,11 +73,11 @@ module Converter
         raw_dc_elements_for(datastream, namespace).each do |element| 
           name = [datastream.to_s, element.name].join(':')
           if property_seen_before?(datastream, element.name)
-            properties[name][:mulitple_type] = true
+            properties[name][:multiple_type] = true
           else
             properties[name] = empty_hash(
               name: element.name, 
-              mulitple_type: false,
+              multiple_type: false,
               namespace: namespace,
               datastream: datastream
             )

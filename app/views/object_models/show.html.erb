@@ -1,12 +1,14 @@
 <h1>Object Model: <%= @object_model.name %></h1>
 
-<% @object_model.properties.each do |property| %>
+<% @object_model.properties.group_by(&:datastream).each do |datastream, properties| %>
+<h2>Datastream: <%= datastream %></h2>
+<%   properties.each do |property| %>
 <p>
   property :<%= property.name %>, 
   predicate: ::RDF::<%= property.namespace.try(:upcase) %>.<%= property.name %>, 
-  multiple: <%= property.multiple? %>,
-  datastream: <%= property.datastream %>
+  multiple: <%= property.multiple? %>
 </p>
+<%   end %>
 <% end %>
 
 <%= link_to 'Items belonging to this object model', object_model_items_path(@object_model) %>

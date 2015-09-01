@@ -29,6 +29,7 @@ module Process
       end
       property = item.object_model.properties.find_by name: 'title'
       assert property, "Property should have been added to item's object model"
+      assert_equal false, property.multiple_type
     end
     
     def test_add_properties_twice_does_not_create_duplicates

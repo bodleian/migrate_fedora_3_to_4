@@ -46,13 +46,13 @@ module Process
     def add_properties
       assign_to_object_model
       item_data.properties.each do |args|
-       property = object_model.properties.find_or_initialize_by(
+        property = object_model.properties.find_or_initialize_by(
                                             name: args[:name], 
                                             datastream: args[:datastream],
                                             namespace: args[:namespace]
                                           )
-       property.multiple_type = args[:multiple_type]
-       property.save
+        property.multiple_type = args[:multiple_type]
+        property.save
       end
     end
     

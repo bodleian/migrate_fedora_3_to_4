@@ -28,7 +28,7 @@ module Converter
       }
       expected.each do |name, multiple_type|
         property = xml_to_item.properties.select{|p| p[:name] == name and p[:datastream] == 'DC.1'}.first
-        assert_equal multiple_type, property[:mulitple_type], "ppoperty #{name} multiple_type should be #{multiple_type}"
+        assert_equal multiple_type, property[:multiple_type], "property #{name} multiple_type should be #{multiple_type}"
       end
     end
     
