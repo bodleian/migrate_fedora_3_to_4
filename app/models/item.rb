@@ -23,4 +23,8 @@ class Item < ActiveRecord::Base
     Regexp.new (prefix + separator + uuid_pattern)
   end
   
+  def to_param
+    identifier
+  end
+  
 end
