@@ -8,18 +8,20 @@ module Converter
       @xml = xml     
     end
     
-    # Collects all the item's properties in an array of property name/value pairs
+    # Collects all the item's properties in a parameters hash.
     # Note that names will not be unique. That is, as a property may have multiple
-    # values, each value will result in a property name/value pair. So:
+    # values, each value will result in an individual property_value. So:
     # 
-    #   <dc:foo>x</dc:foo><dc:foo>y</dc:foo><dc:bar>z</dc:bar>
+    #   <foxml:datastreamVersion ID="DC.1">
+    #     <dc:foo>x</dc:foo><dc:foo>y</dc:foo><dc:bar>z</dc:bar>
+    #   </foxml:datastreamVersion>
     #   
     # Will produce:
     # 
     #   [
-    #     { name: 'foo', value: 'x', namespace: 'dc'}, 
-    #     { name: 'foo', value: 'y', namespace: 'dc'}, 
-    #     { name: 'bar', value: 'z', namespace: 'dc'} 
+    #     { name: 'foo', value: 'x', namespace: 'dc', datastream: 'DC.1'}, 
+    #     { name: 'foo', value: 'y', namespace: 'dc', datastream: 'DC.1'}, 
+    #     { name: 'bar', value: 'z', namespace: 'dc', datastream: 'DC.1'} 
     #   ]
     #
     def property_values
@@ -29,17 +31,19 @@ module Converter
     # Identifies all the property fields used in the item together with whether
     # they are used singularly or multiple times. Thus:
     # 
-    #   <dc:foo>x</dc:foo><dc:foo>y</dc:foo><dc:bar>z</dc:bar>
+    #   <foxml:datastreamVersion ID="DC.1">
+    #     <dc:foo>x</dc:foo><dc:foo>y</dc:foo><dc:bar>z</dc:bar>
+    #   </foxml:datastreamVersion>
     #   
     # Will produce:
     # 
-    #   {'foo' => 'multi', 'bar' => 'single'}
+    #   [
+    #     { name: 'foo', multiple_type: true, namespace: 'dc', datastream: 'DC.1'},  
+    #     { name: 'bar', multiple_type: false, namespace: 'dc', datastream: 'DC.1'} 
+    #   ]
     #
     def properties
-      @properties ||= raw_dc_elements.inject({}) do |hash, element| 
-        hash[element.name] = hash[element.name] ? 'multi' : 'single'
-        hash
-      end
+      @properties ||= build_properties
     end
     
     # Identifies which object type the item is a member of
@@ -62,16 +66,37 @@ module Converter
       )
     end
     
+    def build_properties
+      properties = empty_hash
+      data_streams.keys.each do |datastream|
+        namespace = data_streams[datastream]
+        raw_dc_elements_for(datastream, namespace).each do |element| 
+          name = [datastream.to_s, element.name].join(':')
+          if property_seen_before?(datastream, element.name)
+            properties[name][:mulitple_type] = true
+          else
+            properties[name] = empty_hash(
+              name: element.name, 
+              mulitple_type: false,
+              namespace: namespace,
+              datastream: datastream
+            )
+          end
+        end
+      end
+      properties.values
+    end
+    
     def build_property_values
       data_streams.keys.collect do |datastream|
         namespace = data_streams[datastream]
         raw_dc_elements_for(datastream, namespace).collect do |e| 
-          {
+          empty_hash(
             name: e.name, 
             value: e.text,
             namespace: namespace,
             datastream: datastream
-          }
+          )
         end
       end
     end
@@ -102,5 +127,22 @@ module Converter
         rdf: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#'
       }
     end
+    
+    def empty_hash(args = {})
+      HashWithIndifferentAccess.new args
+    end
+    
+    def property_seen_before?(datastream, name)
+      name = name.to_sym
+      @property_seen_before ||= empty_hash
+      @property_seen_before[datastream] ||= []
+      if @property_seen_before[datastream].include? name
+        return true
+      else
+        @property_seen_before[datastream] << name
+        return false
+      end
+    end
+
   end
 end

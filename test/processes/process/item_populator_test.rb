@@ -81,11 +81,11 @@ module Process
     end
     
     def values_defined_in_xml
-      23
+      25
     end
     
     def properties_defined_in_xml
-      10
+      12
     end
     
   end
