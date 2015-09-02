@@ -9,10 +9,10 @@
 <body>
   <div class="container">
     <ul class="nav nav-tabs">
-      <li role="presentation" class="<%= 'active' if current_page?(controller: 'object_models', action: 'index') %>">
+      <li role="presentation" class="<%= active_if_index_for? 'object_models' %>">
         <%= link_to 'Object Models', root_path %>
       </li>
-      <li role="presentation" class="<%= 'active' if current_page?(controller: 'items', action: 'index') %>">
+      <li role="presentation" class="<%= active_if_index_for? 'items' %>">
         <%= link_to 'Items', items_path %>
       </li>
     </ul>
