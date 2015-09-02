@@ -1,4 +1,11 @@
 <h1>Object Model: <%= @object_model.name %></h1>
+<p>
+  <%= pluralize(@object_model.items.count, 'item is', 'items are') %>
+  associated with this Object Model.
+</p>
+<%= 
+  link_to 'Associated items', object_model_items_path(@object_model), class: 'btn btn-info' 
+%>
 
 <% @object_model.properties.group_by(&:datastream).each do |datastream, properties| %>
 <h2>Datastream: <%= datastream %></h2>
@@ -10,5 +17,3 @@
 </p>
 <%   end %>
 <% end %>
-
-<%= link_to 'Items belonging to this object model', object_model_items_path(@object_model) %>
