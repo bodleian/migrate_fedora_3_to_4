@@ -6,11 +6,13 @@ module Converter
     def test_property_values
       assert_equal 25, xml_to_item.property_values.length
       
+      property_value = xml_to_item.property_values.select{|p| p[:datastream] == 'DC.1'}.first
+      
       expected_name = property_value_in_xml_file.first
-      assert_equal expected_name, xml_to_item.property_values.first[:name]
+      assert_equal expected_name, property_value[:name]
       
       expected_value = property_value_in_xml_file.last
-      assert_equal expected_value, xml_to_item.property_values.first[:value]
+      assert_equal expected_value, property_value[:value]
     end
     
     def test_properties

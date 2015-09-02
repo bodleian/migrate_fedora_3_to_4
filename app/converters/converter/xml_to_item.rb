@@ -38,7 +38,7 @@ module Converter
     # Will produce:
     # 
     #   [
-    #     { name: 'foo', multiple_type: true, namespace: 'dc', datastream: 'DC.1'},  
+    #     { name: 'foo', multiple_type: true,  namespace: 'dc', datastream: 'DC.1'},  
     #     { name: 'bar', multiple_type: false, namespace: 'dc', datastream: 'DC.1'} 
     #   ]
     #
@@ -48,22 +48,72 @@ module Converter
     
     # Identifies which object type the item is a member of
     def is_member_of
+      return unless namespaces.keys.include? :rdf
       @is_member_of ||= is_member_of_element.to_s.split(':').last
     end
     
+    # TODO - replace data_streams with datastreams
     def data_streams
-      {
-        'DC.1' => 'dc',
-        'DC1.0' => 'dc'
-      }
+      datastreams.select{|k,| /^DC/ =~ k }
     end
     
-    private
-    def raw_dc_elements
-      @raw_dc_elements ||= doc.xpath(
-        '//foxml:datastreamVersion[@ID="DC.1"]//dc:*',
-        namespaces
-      )
+    def datastreams
+      @datastreams ||= xml_content_nodes.inject(empty_hash) do |hash, node|
+        name = node.parent.attribute('ID').value
+        hash[name] = get_namespace_for(node)
+        hash
+      end
+    end
+    
+    def doc
+      @doc ||= Nokogiri::XML xml
+    end
+    
+    # A hash of namespaces with name keys and the uri's where they are defined
+    # as values. This is built from the document itself using 
+    #   Nokogiri::XML::Document#collect_namespaces
+    def namespaces
+      @namespaces ||= doc.collect_namespaces.inject({}) do |hash, namespace| 
+        name, uri = namespace
+        name = remove_leading_xmlns(name)
+        hash[name.to_sym] = uri
+        hash
+      end
+    end
+    
+    private    
+    
+    # Furthest nodes are the children within a node, that do not have children
+    # So for:
+    #   <x>
+    #     <y>
+    #       <z></z>
+    #     </y>
+    #   </x>
+    # 
+    # The furthest node for x would be z
+    #
+    def furthest_nodes_for(node)
+      if node.children.empty? 
+        node
+      else
+        # this node not an end point so move on to children of this node
+        children = node.children.collect{|n| furthest_nodes_for n}.flatten
+        # remove empty text elements
+        children.select do |c| 
+          c.class == Nokogiri::XML::Element || 
+            (c.class == Nokogiri::XML::Text && c.content.present?)
+        end
+      end
+    end
+    
+    # We are using names spaces to retrieve data in the furthest nodes,
+    # so need the name spaces that apply to those nodes.
+    def get_namespace_for(node)
+      further_node_namespaces = furthest_nodes_for(node).collect do |n| 
+        n.namespace ? n.namespace.prefix : n.parent.namespace.prefix
+      end
+      further_node_namespaces.first
     end
     
     def build_properties
@@ -115,17 +165,16 @@ module Converter
       )
     end
     
-    def doc
-      @doc ||= Nokogiri::XML xml
+    # The xmlContent nodes are a useful point to extract data. 
+    #   * parents are the datastreamVersion elements, so can identify datastreams
+    #   * childrent can be used to identify the namespace being used within
+    #     the datastream
+    def xml_content_nodes
+      @xml_content_nodes ||= doc.xpath("//foxml:xmlContent", namespaces)
     end
     
-    def namespaces
-      {
-        foxml: 'info:fedora/fedora-system:def/foxml#', 
-        dc: 'http://purl.org/dc/elements/1.1/',
-        rel: 'info:fedora/fedora-system:def/relations-external#', 
-        rdf: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#'
-      }
+    def remove_leading_xmlns(name)
+      name.sub(/^xmlns:/, '')
     end
     
     def empty_hash(args = {})

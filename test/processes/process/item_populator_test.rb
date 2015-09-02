@@ -59,7 +59,7 @@ module Process
         item_populator.assign_property_values
       end
       name, value = property_value_in_xml_file
-      property_value = item.property_values.find_by name: name
+      property_value = item.property_values.find_by name: name, datastream: 'DC.1'
       assert_equal value, property_value.value
     end
     
