@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150901113603) do
+ActiveRecord::Schema.define(version: 20150908143150) do
 
   create_table "items", force: :cascade do |t|
     t.string   "identifier",      limit: 255
@@ -28,6 +28,17 @@ ActiveRecord::Schema.define(version: 20150901113603) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
+
+  create_table "object_properties", force: :cascade do |t|
+    t.integer  "object_model_id", limit: 4
+    t.string   "name",            limit: 255
+    t.string   "value",           limit: 255
+    t.boolean  "external",                    default: false
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
+  end
+
+  add_index "object_properties", ["object_model_id"], name: "index_object_properties_on_object_model_id", using: :btree
 
   create_table "properties", force: :cascade do |t|
     t.string   "name",            limit: 255
@@ -54,6 +65,7 @@ ActiveRecord::Schema.define(version: 20150901113603) do
   add_index "property_values", ["item_id"], name: "index_property_values_on_item_id", using: :btree
 
   add_foreign_key "items", "object_models"
+  add_foreign_key "object_properties", "object_models"
   add_foreign_key "properties", "object_models"
   add_foreign_key "property_values", "items"
 end

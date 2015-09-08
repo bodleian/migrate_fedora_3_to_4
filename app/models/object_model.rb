@@ -4,5 +4,6 @@ class ObjectModel < ActiveRecord::Base
   
   has_many :items
   has_many :properties
+  has_many :object_properties
   
 end
