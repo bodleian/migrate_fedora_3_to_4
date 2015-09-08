@@ -18,7 +18,7 @@ module Process
     #
     def self.for item, args
       item_populator = new(item, args)
-      item_populator.assign_property_values
+      item_populator.add_property_values
       item_populator.add_properties
       item_populator.record_source_url
       item.save
@@ -36,7 +36,7 @@ module Process
       item.object_model = object_model
     end
     
-    def assign_property_values
+    def add_property_values
       item.property_values.destroy_all
       item_data.property_values.each do |params|
         item.property_values.create(params)
