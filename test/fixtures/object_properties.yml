@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  object_model: foo
+  item: two
   name: 'info:fedora/fedora-system:def/model#state'
   value: Active
   external: false
 
 two:
-  object_model: foo
+  item: two
   name: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type'
   value: FedoraObject
   external: true

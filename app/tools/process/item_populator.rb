@@ -20,6 +20,7 @@ module Process
       item_populator = new(item, args)
       item_populator.add_property_values
       item_populator.add_properties
+      item_populator.add_object_properties
       item_populator.record_source_url
       item.save
       item_populator
@@ -53,6 +54,15 @@ module Process
                                           )
         property.multiple_type = args[:multiple_type]
         property.save
+      end
+    end
+    
+    def add_object_properties
+      item_data.object_properties.each do |params|
+        object_property = item.object_properties.find_or_initialize_by name: params[:name]
+        object_property.value = params[:value]
+        object_property.external = params[:external]
+        object_property.save
       end
     end
     

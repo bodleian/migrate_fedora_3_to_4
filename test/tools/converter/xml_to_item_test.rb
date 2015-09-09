@@ -34,6 +34,22 @@ module Converter
       end
     end
     
+    def test_object_properties
+      expected = {
+        'Active' => false,
+        'ora:2141' => false,
+        'fedoraAdmin' => false,
+        '2008-06-27T10:32:18.792Z' => false,
+        '2014-02-05T00:31:44.421Z' => false,
+        'FedoraObject' => true
+      }
+      expected.each do |value, external|
+        object_property = xml_to_item.object_properties.select{|p| p[:value] == value}.first
+        assert_equal external, object_property[:external], 
+          "external should be #{external} for #{object_property.inspect}"
+      end
+    end
+    
     def test_member_of
       assert_equal 'article', xml_to_item.is_member_of
     end

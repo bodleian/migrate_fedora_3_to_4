@@ -8,15 +8,17 @@ module Process
     end
     
     def test_do_for
-      assert_difference 'ObjectModel.count' do
+      assert_difference 'ObjectProperty.count', object_properties_defined_in_xml do
         assert_difference 'item.property_values.count', values_defined_in_xml do
-          assert_difference 'Property.count', properties_defined_in_xml do
-            ItemPopulator.for(
-              item,
-              fedora_root: fedora_root,
-              username: username,
-              password: password
-            )
+          assert_difference 'ObjectModel.count' do
+            assert_difference 'Property.count', properties_defined_in_xml do
+              ItemPopulator.for(
+                item,
+                fedora_root: fedora_root,
+                username: username,
+                password: password
+              )
+            end
           end
         end
       end
@@ -37,6 +39,22 @@ module Process
       assert_no_difference 'Property.count' do
         item_populator.add_properties
       end
+    end
+    
+    def test_add_object_poperties
+      assert_difference 'ObjectProperty.count', object_properties_defined_in_xml do
+        item_populator.add_object_properties
+      end
+      expected_names = %w[state label ownerId createdDate lastModifiedDate type]
+      actual_names = item.object_properties.collect &:short_name
+      assert_equal expected_names.sort, actual_names.sort
+    end
+    
+    def test_external_object_property_added_via_add_object_poperties
+      test_add_object_poperties
+      object_property = item.object_properties.find_by value: 'FedoraObject'
+      assert_equal 'type', object_property.short_name
+      assert_equal true, object_property.external?
     end
     
     def test_assign_to_object_model
@@ -87,6 +105,10 @@ module Process
     
     def properties_defined_in_xml
       12
+    end
+    
+    def object_properties_defined_in_xml
+      6
     end
     
   end

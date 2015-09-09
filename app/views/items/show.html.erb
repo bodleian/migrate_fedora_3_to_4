@@ -7,6 +7,24 @@
   <%= link_to @item.object_model_name, @item.object_model %>
 </p>
 
+<h2>Object Properties</h2>
+<table class="table">
+  <tr>
+    <th>Name</th>
+    <th>Full name</th>
+    <th>Value</th>
+    <th>External</th>
+  </tr>
+<% @item.object_properties.each do |object_properties| %>
+  <tr>
+    <td><%= object_properties.short_name %></td>
+    <td><%= object_properties.name %></td>
+    <td><%= object_properties.value %></td>
+    <td><%= object_properties.external %></td>
+  </tr>
+<% end %>
+</table>
+
 <% @item.property_values.group_by(&:datastream).each do |datastream, property_values| %>
 <h2>Datastream: <%= datastream  %></h2>
 <table class="table">

@@ -6,6 +6,7 @@ class Item < ActiveRecord::Base
   
   has_many :properties, through: :object_model
   has_many :property_values
+  has_many :object_properties
   
   def self.populate(hash)
     return unless hash['results']

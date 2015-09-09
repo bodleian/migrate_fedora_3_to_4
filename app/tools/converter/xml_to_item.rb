@@ -46,6 +46,24 @@ module Converter
       @properties ||= build_properties
     end
     
+    # Collects object properties
+    # 
+    #   <foxml:objectProperties>
+    #     <foxml:property NAME="foo#bar" VALUE="2014-02-05T00:31:44.421Z"/>
+    #     <foxml:extproperty NAME="http://example.com#type" VALUE="FedoraObject"/>
+    #   </foxml:objectProperties>
+    #   
+    #   Will produce
+    #   
+    #     [
+    #       { name: 'foo#bar', value: '2014-02-05T00:31:44.421Z', external: false },
+    #       { name: 'http://example.com#type', value: 'FedoraObject', external: true}
+    #     ]
+    #
+    def object_properties
+      @object_properties ||= build_object_properties
+    end
+    
     # Identifies which object type the item is a member of
     def is_member_of
       return unless namespaces.keys.include? :rdf
@@ -156,6 +174,21 @@ module Converter
         "//foxml:datastreamVersion[@ID=\"#{datastream}\"]//#{namespace}:*",
         namespaces
       )
+    end
+    
+    def build_object_properties
+      object_property_nodes.collect do |node|
+        empty_hash(
+          external: (node.name == 'extproperty'),
+          name: node.attributes['NAME'].value,
+          value: node.attributes['VALUE'].value
+        )
+      end
+    end
+    
+    def object_property_nodes
+      nodes = doc.xpath("//foxml:objectProperties", namespaces).children
+      nodes.select{|o| o.class == Nokogiri::XML::Element}
     end
     
     def is_member_of_element
