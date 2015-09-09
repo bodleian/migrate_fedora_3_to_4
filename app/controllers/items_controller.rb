@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   
   def index
     @items = object_model ? object_model.items : Item.all
+    @items = @items.order(:identifier).page params[:page]
   end
 
   def show

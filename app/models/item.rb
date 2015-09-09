@@ -8,6 +8,8 @@ class Item < ActiveRecord::Base
   has_many :property_values
   has_many :object_properties
   
+  paginates_per 25
+  
   def self.populate(hash)
     return unless hash['results']
     hash['results'].each do |result|

@@ -4,13 +4,13 @@ class ItemsControllerTest < ActionController::TestCase
   def test_index
     get :index
     assert_response :success
-    assert_equal Item.all, assigns('items')
+    assert_equal Item.order(:identifier).page, assigns('items')
   end
   
   def test_index_with_object_model
     get :index, object_model_id: object_model
     assert_response :success
-    assert_equal object_model.items, assigns('items')
+    assert_equal object_model.items.order(:identifier).page, assigns('items')
   end
 
   def test_show

@@ -20,7 +20,7 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-gem 'nokogiri'
+gem 'nokogiri' # For manipulating XML
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -38,5 +38,7 @@ group :test do
   gem 'mocha'
 end
 
-gem "twitter-bootstrap-rails"
+gem "twitter-bootstrap-rails" # adds bootstrap styling
+
+gem 'kaminari'
 
