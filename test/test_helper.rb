@@ -37,6 +37,10 @@ class ActiveSupport::TestCase
     ["title", "Public policy towards R&D in oligopolistic industries"]
   end
   
+  def external_datastreams_in_xml_file
+    %w[CITATION CITATION-CSL EVENT MARC21]
+  end
+  
   def fedora_config_yml_path
     full_path_to('data/fedora_config.yml')
   end

@@ -42,3 +42,11 @@
 <%   end %>
 </table>
 <% end %>
+
+<h2>External Datastreams</h2>
+<p>This item also has data stored in the following external datastreams:</p>
+<ul>
+<% @item.external_datastreams.each do |external_datastream| %>
+  <li><%= external_datastream %></li>
+<% end %>
+</ul>

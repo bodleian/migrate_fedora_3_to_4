@@ -23,6 +23,7 @@ module Process
         end
       end
       assert_match fedora_root, item.source_url
+      assert_equal external_datastreams_in_xml_file, item.external_datastreams.sort
     end
     
     def test_add_properties
@@ -79,6 +80,11 @@ module Process
       name, value = property_value_in_xml_file
       property_value = item.property_values.find_by name: name, datastream: 'DC.1'
       assert_equal value, property_value.value
+    end
+    
+    def test_add_external_datastreams
+      item_populator.add_external_datastreams
+      assert_equal external_datastreams_in_xml_file, item.external_datastreams.sort
     end
     
     def test_record_source_url

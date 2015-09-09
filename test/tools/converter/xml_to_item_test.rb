@@ -50,6 +50,11 @@ module Converter
       end
     end
     
+    def test_external_datastreams
+      expected = external_datastreams_in_xml_file
+      assert_equal expected, xml_to_item.external_datastreams.sort
+    end
+    
     def test_member_of
       assert_equal 'article', xml_to_item.is_member_of
     end

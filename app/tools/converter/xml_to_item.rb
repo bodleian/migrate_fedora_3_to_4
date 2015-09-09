@@ -64,6 +64,15 @@ module Converter
       @object_properties ||= build_object_properties
     end
     
+    def external_datastreams
+      doc.xpath(
+        "//foxml:datastream[@CONTROL_GROUP=\"M\"]",
+        namespaces
+      ).collect do |datastream|
+        datastream['ID']
+      end
+    end
+    
     # Identifies which object type the item is a member of
     def is_member_of
       return unless namespaces.keys.include? :rdf

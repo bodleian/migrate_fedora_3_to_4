@@ -8,6 +8,8 @@ class Item < ActiveRecord::Base
   has_many :property_values
   has_many :object_properties
   
+  serialize :external_datastreams, Array
+  
   paginates_per 25
   
   def self.populate(hash)

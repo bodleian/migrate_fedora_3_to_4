@@ -3,6 +3,14 @@
 module Process
   class ItemPopulator
     
+    PROCESS_STEPS = [
+      :add_property_values,
+      :add_properties,
+      :add_object_properties,
+      :record_source_url,
+      :add_external_datastreams    
+    ]
+    
     # Typical usage:
     #   ItemPopulator.for(
     #     item,
@@ -11,26 +19,27 @@ module Process
     #     password: 'password'
     #   )
     #
-    # This will gather the XML describing this item, from fedora. Than the data
+    # This will gather the XML describing this item, from fedora. Then the data
     # contained in the XML will be used to update the item and create
     # sub-objects (for example, properties and propery_values) where this
     # data is stored.
     #
     def self.for item, args
       item_populator = new(item, args)
-      item_populator.add_property_values
-      item_populator.add_properties
-      item_populator.add_object_properties
-      item_populator.record_source_url
+      item_populator.run_process_steps
       item.save
       item_populator
     end
-    
+        
     attr_reader :item, :args
     
     def initialize(item, args)
       @item = item
       @args = args
+    end
+    
+    def run_process_steps
+      PROCESS_STEPS.each{|process_step| send process_step }
     end
     
     def assign_to_object_model
@@ -64,6 +73,10 @@ module Process
         object_property.external = params[:external]
         object_property.save
       end
+    end
+    
+    def add_external_datastreams
+      item.external_datastreams = item_data.external_datastreams
     end
     
     def record_source_url
