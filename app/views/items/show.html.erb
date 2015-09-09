@@ -10,17 +10,17 @@
 <h2>Object Properties</h2>
 <table class="table">
   <tr>
+    <th>Type</th>
     <th>Name</th>
-    <th>Full name</th>
     <th>Value</th>
-    <th>External</th>
+    <th>Full name</th>
   </tr>
 <% @item.object_properties.each do |object_properties| %>
   <tr>
+    <td><%= object_properties.property_type %></td>
     <td><%= object_properties.short_name %></td>
-    <td><%= object_properties.name %></td>
     <td><%= object_properties.value %></td>
-    <td><%= object_properties.external %></td>
+    <td><%= object_properties.name %></td>
   </tr>
 <% end %>
 </table>
