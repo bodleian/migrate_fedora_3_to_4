@@ -41,4 +41,5 @@ end
 gem "twitter-bootstrap-rails" # adds bootstrap styling
 
 gem 'kaminari'
+gem 'kaminari-bootstrap', '~> 3.0.1'
 
