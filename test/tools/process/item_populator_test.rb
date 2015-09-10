@@ -7,24 +7,32 @@ module Process
       stub_call_to_fedora_to_get_xml_for(item)
     end
     
-    def test_do_for
-      assert_difference 'ObjectProperty.count', object_properties_defined_in_xml do
-        assert_difference 'item.property_values.count', values_defined_in_xml do
-          assert_difference 'ObjectModel.count' do
-            assert_difference 'Property.count', properties_defined_in_xml do
-              ItemPopulator.for(
-                item,
-                fedora_root: fedora_root,
-                username: username,
-                password: password
-              )
-            end
-          end
-        end
-      end
+    def test_for     
+      assert_difference 'ObjectModel.count' do
+        use_for_to_populate_item
+      end    
       assert_match fedora_root, item.source_url
       assert_equal external_datastreams_in_xml_file, item.external_datastreams.sort
     end
+    
+    def test_for_creates_object_properties
+      assert_difference 'ObjectProperty.count', object_properties_defined_in_xml do
+        use_for_to_populate_item
+      end
+    end
+    
+    def test_for_creates_property_values
+      assert_difference 'item.property_values.count', values_defined_in_xml do
+        use_for_to_populate_item
+      end
+    end
+    
+    def test_for_creats_properties
+      assert_difference 'Property.count', properties_defined_in_xml do
+        use_for_to_populate_item
+      end
+    end
+
     
     def test_add_properties
       assert_difference 'Property.count', properties_defined_in_xml do
@@ -115,6 +123,15 @@ module Process
     
     def object_properties_defined_in_xml
       6
+    end
+    
+    def use_for_to_populate_item
+      ItemPopulator.for(
+        item,
+        fedora_root: fedora_root,
+        username: username,
+        password: password
+      )
     end
     
   end
