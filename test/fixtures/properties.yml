@@ -10,6 +10,6 @@ one:
 two:
   name: wobble
   multiple_type: true
-  object_model_id: foo
+  object_model: foo
   namespace: dc
   datastream: x

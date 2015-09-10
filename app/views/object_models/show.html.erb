@@ -7,6 +7,17 @@
   link_to 'Associated items', object_model_items_path(@object_model), class: 'btn btn-info' 
 %>
 
+<h2>Object properties</h2>
+<table class="table">
+  <tr><th>Name</th><th>Values used</th></tr>
+<% @object_model.object_property_usage_report.each do |name, values| %>
+  <tr>
+    <td><%= name %></td>
+    <td><%= values %></td>
+  </tr>
+<% end %>
+</table>
+
 <% @object_model.properties.group_by(&:datastream).each do |datastream, properties| %>
 <h2>Datastream: <%= datastream %></h2>
 <%   properties.each do |property| %>
